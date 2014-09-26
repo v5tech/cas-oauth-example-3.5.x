@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.leleuj</groupId>
+	<artifactId>cas-oauth-example-3.5.x</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<name>CAS OAuth example</name>
+	<description>CAS OAuth example</description>
+
+	<repositories>
+		<repository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>jasig-developer-repo</id>
+			<name>Jasig developer repository</name>
+			<url>http://developer.jasig.org/repo/content/groups/m2-legacy/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jasig.cas</groupId>
+				<artifactId>cas-server-webapp</artifactId>
+				<version>${cas.version}</version>
+				<type>war</type>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jasig.cas</groupId>
+				<artifactId>cas-server-support-oauth</artifactId>
+				<version>${cas.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jasig.cas</groupId>
+				<artifactId>cas-server-support-jdbc</artifactId>
+				<version>${cas.version}</version>
+			</dependency>
+			<dependency>
+			  <groupId>mysql</groupId>
+			  <artifactId>mysql-connector-java</artifactId>
+			  <version>${mysql.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>commons-dbcp</groupId>
+			    <artifactId>commons-dbcp</artifactId>
+			    <version>${dbcp.version}</version>
+			    <scope>runtime</scope>
+			</dependency>
+			<dependency>
+			  <groupId>com.google.code.kaptcha</groupId>
+			  <artifactId>kaptcha</artifactId>
+			  <version>${kaptcha.version}</version>
+			</dependency>			
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.5.1</version>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.7</version>
+					<configuration>
+						<wtpversion>2.0</wtpversion>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<modules>
+		<module>cas-oauth-client-example-3.5.x</module>
+		<module>cas-oauth-server-example-3.5.x</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<cas.version>3.5.2</cas.version>
+		<mysql.version>5.1.32</mysql.version>
+		<dbcp.version>1.2.1</dbcp.version>
+		<kaptcha.version>2.3.2</kaptcha.version>
+	</properties>
+</project>
